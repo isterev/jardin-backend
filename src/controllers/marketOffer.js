@@ -88,11 +88,26 @@ const list  = async (req, res) => {
   }
 };
 
+const listMyOffers  = async (req, res) => {
+    try {
+        let marketOffers = await MarketOfferModel.find({ creator: req.userId }).exec();
+
+        return res.status(200).json(marketOffers);
+    } catch(err) {
+        return res.status(500).json({
+            error: 'Internal server error',
+            message: err.message
+        });
+    }
+};
+
+
 
 module.exports = {
     create,
     read,
     update,
     remove,
-    list
+    list,
+    listMyOffers
 };
