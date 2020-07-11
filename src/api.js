@@ -8,6 +8,7 @@ const middlewares = require('./middlewares');
 
 const auth  = require('./routes/auth');
 const marketOffer = require('./routes/marketOffer');
+const blog = require('./routes/blog');
 
 
 const api = express();
@@ -28,7 +29,8 @@ api.get('/', (req, res) => {
 
 // API routes
 api.use('/auth'  , auth);
-api.use('/marketOffers', marketOffer);
+api.use('/offers', marketOffer);
+api.use('/blogs', blog);
 
 
 module.exports = api;
