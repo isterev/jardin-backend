@@ -45,7 +45,7 @@ const MarketOfferSchema  = new mongoose.Schema({
         type: Number,
         required: true
     },
-    productImage: mongoose.Schema.Types.Buffer // mongoose.Schema.Types.Mixed
+    productImage: String //mongoose.Schema.Types.Buffer // mongoose.Schema.Types.Mixed
 
 });
 
