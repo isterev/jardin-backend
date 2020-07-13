@@ -10,10 +10,21 @@ const MarketOfferSchema  = new mongoose.Schema({
         index: true
     },
 
+    contact:{
+        type: String,
+        required: true
+    },
+
+    type:{
+        type: String,
+        enum : ['Rental', 'Sale'],
+        required: true
+    },
+
     category: {
         type: String,
-        enum : ['SEEDS_SMALL_PLANTS','FERTILISERS', 'MECHANICAL_EQUIPMENT',
-                'ELECTRONIC_EQUIPMENT', 'OTHERS'],
+        enum : ['Seeds and Small Plants','Fertilisers', 'Mechanical Equipment',
+                'Electronic Equipment', 'Others'],
         required: true
     },
 
@@ -26,7 +37,7 @@ const MarketOfferSchema  = new mongoose.Schema({
 
     denomination: {
         type: String,
-        enum : ['UNIT','PER_KG', 'PER_GRAM', 'PER_DAY'],
+        enum : ['unit','per kg', 'per gram', 'per day'],
         required: true
     },
 
