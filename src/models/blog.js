@@ -4,18 +4,28 @@ const mongoose = require('mongoose');
 
 const BlogSchema  = new mongoose.Schema({
 
-    author: {
+    authorId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         index: true
     },
 
-    article_title: {
+    authorFirstName: {
         type: String,
         required: true
     },
 
-    article_body: {
+    authorLastName: {
+        type: String,
+        required: true
+    },
+
+    articleTitle: {
+        type: String,
+        required: true
+    },
+
+    articleBody: {
         type: String,
         required: true
     },
