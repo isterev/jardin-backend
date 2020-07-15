@@ -8,8 +8,8 @@ const BlogController = require('../controllers/blog');
 
 
 router.get('/', BlogController.list);
-router.get('/myBlogs', middlewares.checkAuthentication, BlogController.listMyBlogs);
-router.post('/', middlewares.checkAuthentication, BlogController.create);
+router.get('/my-blogs', BlogController.listMyBlogs);
+router.post('/', BlogController.create);
 router.get('/:id', BlogController.read);
 router.put('/:id', middlewares.checkAuthentication, BlogController.update);
 router.delete('/:id', middlewares.checkAuthentication, BlogController.remove);

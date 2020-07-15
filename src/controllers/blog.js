@@ -89,7 +89,7 @@ const list  = async (req, res) => {
 
 const listMyBlogs  = async (req, res) => {
     try {
-        let blogs = await BlogModel.find({ creator: req.userId }).exec();
+        let blogs = await BlogModel.find({ authorId: req.query['authorId'] }).exec();
 
         return res.status(200).json(blogs);
     } catch(err) {

@@ -9,7 +9,7 @@ const middlewares = require('./middlewares');
 const auth  = require('./routes/auth');
 const marketOffer = require('./routes/marketOffer');
 const blog = require('./routes/blog');
-
+const expertConsultation = require('./routes/expertConsultation')
 
 const api = express();
 
@@ -32,6 +32,6 @@ api.get('/', (req, res) => {
 api.use('/auth'  , auth);
 api.use('/offers', marketOffer);
 api.use('/blogs', blog);
-
+api.use('/expert-consultation', expertConsultation);
 
 module.exports = api;
