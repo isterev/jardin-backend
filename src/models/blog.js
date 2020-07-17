@@ -13,23 +13,10 @@ const BlogSchema  = new mongoose.Schema({
         type: String,
         required: true
     },
-
     articleBody: {
         type: String,
         required: true
-    },
-
-    createdAt: {
-        type: mongoose.Schema.Types.Date,
-        required: true
-    },
-
-    status: {
-        type: String,
-        enum : ['PUBLISHED', 'UNPUBLISHED', 'DRAFT'],
-        required: true
     }
-
 });
 
 BlogSchema.set('versionKey', false);
