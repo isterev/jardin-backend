@@ -78,7 +78,6 @@ const remove = async (req, res) => {
 const list  = async (req, res) => {
     try {
         let blogs = await BlogModel.find({}).sort({createdAt: 'descending'}).exec();
-
         return res.status(200).json(blogs);
     } catch(err) {
         return res.status(500).json({
