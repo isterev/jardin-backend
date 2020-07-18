@@ -2,7 +2,6 @@
 
 const MarketOfferModel = require('../models/marketOffer');
 
-
 const create = async (req, res) => {
     if (Object.keys(req.body).length === 0) return res.status(400).json({
         error: 'Bad Request',
@@ -24,7 +23,6 @@ const create = async (req, res) => {
 const read = async (req, res) => {
   try {
     let marketOffer = await MarketOfferModel.findById(req.params.id).exec();
-
     if (!marketOffer) return res.status(404).json({
       error: 'Not Found',
       message: `MarketOffer not found`
@@ -77,7 +75,7 @@ const remove = async (req, res) => {
 
 const list  = async (req, res) => {
   try {
-    let marketOffers = await MarketOfferModel.find({}).exec();
+    let marketOffers = await MarketOfferModel.find({}).sort({createdAt: 'descending'}).exec();
 
     return res.status(200).json(marketOffers);
   } catch(err) {
@@ -90,7 +88,7 @@ const list  = async (req, res) => {
 
 const listMyOffers  = async (req, res) => {
     try {
-        let marketOffers = await MarketOfferModel.find({ creator: req.userId }).exec();
+        let marketOffers = await MarketOfferModel.find({ creator: req.userId }).sort({createdAt: 'descending'}).exec();
 
         return res.status(200).json(marketOffers);
     } catch(err) {

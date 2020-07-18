@@ -3,6 +3,7 @@
 const BlogModel = require('../models/blog');
 
 const create = async (req, res) => {
+
     if (Object.keys(req.body).length === 0) return res.status(400).json({
         error: 'Bad Request',
         message: 'The request body is empty'
@@ -76,7 +77,7 @@ const remove = async (req, res) => {
 
 const list  = async (req, res) => {
     try {
-        let blogs = await BlogModel.find({}).exec();
+        let blogs = await BlogModel.find({}).sort({createdAt: 'descending'}).exec();
 
         return res.status(200).json(blogs);
     } catch(err) {
@@ -89,8 +90,7 @@ const list  = async (req, res) => {
 
 const listMyBlogs  = async (req, res) => {
     try {
-        let blogs = await BlogModel.find({ authorId: req.query['authorId'] }).exec();
-
+        let blogs = await BlogModel.find({ authorId: req.userId }).sort({createdAt: 'descending'}).exec();
         return res.status(200).json(blogs);
     } catch(err) {
         return res.status(500).json({
