@@ -102,6 +102,22 @@ const me = async (req, res) => {
     }
 };
 
+const getUserById = async (req, res) => {
+    try {
+        let user = await UserModel.findById(req.params.id).exec()
+        if (!user) return res.status(404).json({
+            error: 'Not Found',
+            message: `Consultation Request not found`
+        });
+        return res.status(200).json(user)
+    } catch(err) {
+        return res.status(500).json({
+            error: 'Internal Server Error',
+            message: err.message
+        });
+    }
+}
+
 const logout = (req, res) => {
     res.status(200).send({ token: null });
 };
@@ -111,5 +127,6 @@ module.exports = {
     login,
     register,
     logout,
-    me
+    me,
+    getUserById,
 };

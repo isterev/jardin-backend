@@ -59,6 +59,10 @@ const consultationRequestSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true
+    },
+    scheduledFor: {
+        type: String,
+        enum: ['FIRST_PREF', 'SECOND_PREF', 'THIRD_PREF']
     }
 })
 
