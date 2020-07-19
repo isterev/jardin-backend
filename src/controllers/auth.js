@@ -23,7 +23,11 @@ const login = async (req,res) => {
 
         // check if the password is valid
         const isPasswordValid = bcrypt.compareSync(req.body.password, user.password);
-        if (!isPasswordValid) return res.status(401).send({token: null});
+        if (!isPasswordValid) return res.status(404).json({
+            error: 'Invalid password',
+            message: 'Invalid password',
+            token: null
+        });
 
         // if user is found and password is valid
         // create a token
@@ -34,7 +38,7 @@ const login = async (req,res) => {
         return res.status(200).json({token: token});
     } catch(err) {
         return res.status(404).json({
-            error: 'User Not Found',
+            error: 'Username does not exist',
             message: err.message
         });
     }
@@ -67,7 +71,7 @@ const register = async (req,res) => {
     } catch(err) {
         if (err.code == 11000) {
             return res.status(400).json({
-                error: 'User exists',
+                error: 'Username is already in use',
                 message: err.message
             });
         } else {
