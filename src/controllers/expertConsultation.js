@@ -48,7 +48,7 @@ const getRequests = async (req, res) => {
 
         return res.status(200).json(consultationRequest)
     } catch(err) {
-        return res.status(500).json({
+        return res.status(500).json ({
             error: 'Internal Server Error',
             message: err.message
         });
@@ -71,7 +71,6 @@ const getConsultationSessions = async (req, res) => {
 
 const getConsultationSessionById = async (req, res) => {
     try {
-        console.log(req)
         let consultationRequest = await consultationRequestModel.findById(req.params.id).exec()
         if (!consultationRequest) return res.status(404).json({
             error: 'Not Found',
