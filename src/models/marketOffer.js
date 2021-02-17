@@ -10,6 +10,16 @@ const MarketOfferSchema  = new mongoose.Schema({
         index: true
     },
 
+    creatorFirstName: {
+        type: String,
+        required: true
+    },
+
+    creatorLastName: {
+        type: String,
+        required: true
+    },
+
     contact:{
         type: String,
         required: true

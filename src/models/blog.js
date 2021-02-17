@@ -9,27 +9,22 @@ const BlogSchema  = new mongoose.Schema({
         required: true,
         index: true
     },
+    authorFirstName: {
+        type: String,
+        required: true
+    },
+    authorLastName: {
+        type: String,
+        required: true
+    },
     articleTitle: {
         type: String,
         required: true
     },
-
     articleBody: {
         type: String,
         required: true
-    },
-
-    createdAt: {
-        type: mongoose.Schema.Types.Date,
-        required: true
-    },
-
-    status: {
-        type: String,
-        enum : ['PUBLISHED', 'UNPUBLISHED', 'DRAFT'],
-        required: true
     }
-
 });
 
 BlogSchema.set('versionKey', false);
